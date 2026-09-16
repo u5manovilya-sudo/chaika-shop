@@ -1,6 +1,6 @@
 ﻿import React, { useState, useRef } from 'react';
 
-const FORM_ID = 'meeblvvz'; // ваш Formspree ID
+const FORM_ID = 'meeblvvz'; // замените на свой
 
 function ContactForm() {
     const form = useRef();
@@ -14,6 +14,7 @@ function ContactForm() {
         setLoading(true);
 
         const formData = new FormData(form.current);
+        // можно добавить скрытое поле _subject для темы письма
         formData.append('_subject', 'Новое сообщение с сайта СпортМаркет');
 
         try {
@@ -48,6 +49,7 @@ function ContactForm() {
                 <input type="text" name="name" placeholder="Ваше имя" required />
                 <input type="email" name="_replyto" placeholder="Email" required />
                 <textarea name="message" placeholder="Сообщение" rows={4} required />
+                {/* Honeypot-поле (невидимое) */}
                 <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
                 <button type="submit" disabled={loading}>
                     {loading ? 'Отправка...' : 'Отправить'}
