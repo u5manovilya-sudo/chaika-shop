@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
 import './App.css';
 import Checkout from './components/Checkout';
+import ContactForm from './components/ContactForm';
 import img01 from './images/classic.jpg';
 import img02 from './images/universal.jpg';
+import img03 from './images/professional.jpg';
+import img04 from './images/scratch.jpg';
 import img05 from './images/platform.jpg';
+import img06 from './images/blades.jpg';
+import img07 from './images/narrow_wheels.jpg';
+import img08 from './images/wide_wheels.jpg';
+import img10 from './images/bearing.jpg';
+import img11 from './images/key.jpg';
 
-const categories = ['Все', 'Фрискейты', 'Комплектующие', 'Аксессуары'];
+const categories = ['Все', 'Фрискейты', 'Комплектующие', 'Аксессуары', 'Комплекты'];
 
 const initialProducts = [
     { id: 1, name: 'Фрискейты "Классические"', price: 10000, category: 'Фрискейты', image: img01 },
     { id: 2, name: 'Фрискейты "Универсальные"', price: 15000, category: 'Фрискейты', image: img02 },
-    { id: 3, name: 'Фрискейты "Профессиональные"', price: 20000, category: 'Фрискейты', image: img01 },
-    { id: 4, name: 'Комплект шкурок для подошв фрискейтов', price: 800, category: 'Комплектующие', image: img01 },
+    { id: 3, name: 'Фрискейты "Профессиональные"', price: 20000, category: 'Фрискейты', image: img03 },
+    { id: 4, name: 'Комплект шкурок для подошв фрискейтов', price: 800, category: 'Комплектующие', image: img04 },
     { id: 5, name: 'Платформа для фрискейта универсальная', price: 3000, category: 'Комплектующие', image: img05 },
-    { id: 6, name: 'Зимние лезвия для фрискейтов универсальных', price: 6000, category: 'Комплектующие', image: img01 },
-    { id: 7, name: 'Колёса узкого профиля', price: 700, category: 'Комплектующие', image: img01 },
-    { id: 8, name: 'Колёса широкого профиля', price: 700, category: 'Комплектующие', image: img01 },
-    { id: 9, name: 'Комплект подвесок', price: 5000, category: 'Комплектующие', image: img01 },
-    { id: 10, name: 'Комплект подшипников на одну пару фрискейтов', price: 2500, category: 'Комплектующие', image: img01 },
-    { id: 11, name: 'Сумка для фрискейтов', price: 1700, category: 'Аксессуары', image: img01 },
+    { id: 6, name: 'Зимние лезвия для фрискейтов универсальных', price: 6000, category: 'Комплектующие', image: img06 },
+    { id: 7, name: 'Колёса узкого профиля', price: 700, category: 'Комплектующие', image: img07 },
+    { id: 8, name: 'Колёса широкого профиля', price: 700, category: 'Комплектующие', image: img08 },
+    { id: 9, name: 'Комплект подвесок', price: 5000, category: 'Комплектующие', image: img00 },
+    { id: 10, name: 'Комплект подшипников на одну пару фрискейтов', price: 2500, category: 'Комплектующие', image: img10 },
+    { id: 11, name: 'Ключ для фрискейтов', price: 1700, category: 'Аксессуары', image: img11 },
+    { id: 12, name: 'Комплект "Базовый"', price: 15700, category: 'Комплекты', image: img00 },
+    // Комплектация: фрискейты "Классические", комплект шкурок, колёса широкого профиля, подшипники, ключ.
+    { id: 13, name: 'Комплект "Универсальный"', price: 32400, category: 'Комплекты', image: img00 },
+    // Комплектация: фрискейты "Универсальные", комплект шкурок, платформа, лезвия, колёса узкого и широкого профиля, подвески, подшипники, ключ.
+    { id: 14, name: 'Комплект "Профессиональный"', price: 25700, category: 'Комплекты', image: img00 },
+    // Комплектация: фрискейты "Профессиональные", комплект шкурок, колёса широкого профиля, подшипники, ключ.
 ];
 
 function App() {
@@ -217,49 +231,19 @@ function App() {
             )}
 
             {/* Форма обратной связи */}
-            <section style={{ marginTop: 40, background: '#f9f9f9', padding: 20, borderRadius: 8 }}>
-                <h2>📩 Напишите нам</h2>
-                {submitted && <p style={{ color: 'green' }}>Сообщение отправлено!</p>}
-                <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', maxWidth: 400 }}>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Ваше имя"
-                        value={form.name}
-                        onChange={handleFormChange}
-                        required
-                        style={{ marginBottom: 10, padding: 8 }}
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={form.email}
-                        onChange={handleFormChange}
-                        required
-                        style={{ marginBottom: 10, padding: 8 }}
-                    />
-                    <textarea
-                        name="message"
-                        placeholder="Сообщение"
-                        rows={4}
-                        value={form.message}
-                        onChange={handleFormChange}
-                        required
-                        style={{ marginBottom: 10, padding: 8 }}
-                    />
-                    <button type="submit" style={{ background: '#007bff', color: 'white', border: 'none', padding: 10, borderRadius: 4, cursor: 'pointer' }}>
-                        Отправить
-                    </button>
-                </form>
-            </section>
+            <ContactForm />
 
             {/* Футер */}
             <footer style={{ marginTop: 40, borderTop: '1px solid #ccc', padding: '20px 0', textAlign: 'center' }}>
                 <p>© 2025 Фрискейты "Чайка". Все права защищены.</p>
+                <p>Учебная версия. Не является публичной афертой</p>
                 <p>📞 8-952-402-46-67 | 📧 u5manov.ilya@yandex.ru</p>
             </footer>
         </div>
+    );
+}
+
+export default App;
     );
 }
 
